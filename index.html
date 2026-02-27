@@ -1,16 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
-<title>Radar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RADAR — Distance Sensor</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+  </style>
 </head>
 <body>
 
-<h1>ESP8266 Radar System</h1>
-<canvas id="radar" width="500" height="500"></canvas>
+<header>
+  <h1>⬡ RADAR SYSTEM</h1>
+  <div class="header-right">
+    <div><span class="dot"></span>LIVE</div>
+    <div id="time">--:--:--</div>
+    <div>HC-SR04 · SG90</div>
+  </div>
+</header>
 
-<script src="script.js"></script>
+<div class="layout">
 
+  <!-- LEFT PANEL -->
+  <div class="side-panel left">
+    <div class="data-block">
+      <div class="data-label">Distance</div>
+      <div class="data-value" id="dist-val">--</div>
+      <div class="data-unit">CENTIMETERS</div>
+    </div>
+    <div class="data-block">
+      <div class="data-label">Servo Angle</div>
+      <div class="data-value" id="angle-val">0</div>
+      <div class="data-unit">DEGREES</div>
+    </div>
+    <div class="data-block">
+      <div class="data-label">History</div>
+      <div class="bar-chart" id="bar-chart"></div>
+    </div>
+  </div>
+
+  <!-- RADAR CANVAS -->
+  <div class="radar-container">
+    <canvas id="radar"></canvas>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="side-panel right">
+    <div class="data-block">
+      <div class="data-label">Status</div>
+      <div class="data-value" id="status-val" style="font-size:1rem;padding-top:4px;color:#ff4444">OFF</div>
+      <div class="data-unit">CONNECTION</div>
+    </div>
+    <div class="data-block">
+      <div class="data-label">Objects</div>
+      <div class="data-value" id="obj-val">0</div>
+      <div class="data-unit">DETECTED</div>
+    </div>
+    <div class="log">
+      <div class="log-title">// EVENT LOG</div>
+      <div id="log-entries"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>ESP8266 IP →</span>
+  <input type="text" id="esp-ip" value="192.168.1.45" />
+  <button onclick="applyIP()">Connect</button>
+  <span id="conn-status" style="color:#ff4444">DISCONNECTED</span>
+</footer>
+
+<script src="script.js">
+</script>
 </body>
 </html>
